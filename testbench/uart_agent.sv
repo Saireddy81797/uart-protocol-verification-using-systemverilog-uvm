@@ -1,0 +1,19 @@
+class uart_agent extends uvm_agent;
+
+`uvm_component_utils(uart_agent)
+
+uart_driver drv;
+uart_monitor mon;
+
+function new(string name, uvm_component parent);
+    super.new(name,parent);
+endfunction
+
+function void build_phase(uvm_phase phase);
+
+drv = uart_driver::type_id::create("drv",this);
+mon = uart_monitor::type_id::create("mon",this);
+
+endfunction
+
+endclass
